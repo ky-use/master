@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>お問い合わせフォーム</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <style>
+            p {
+                font-weight: bolder;
+            }
+            html {
+              overflow-y: scroll;
+            }
+            body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td {
+              margin: 0;
+              padding: 0;
+            }
+            address,caption,cite,code,dfn,em,strong,th,var {
+              font-style: normal;
+            }
+            table {
+              border-collapse: collapse;
+              border-spacing: 0;
+            }
+            caption,th {
+              text-align: left;
+            }
+            q:before,q:after {
+              content: '';
+            }
+            object,embed {
+              vertical-align: top;
+            }
+            hr,legend {
+              display: none;
+            }
+            h1,h2,h3,h4,h5,h6 {
+              font-size: 100%;
+            }
+            img,abbr,acronym,fieldset {
+              border: 0;
+            }
+            li {
+              list-style-type: none;
+            }
+            sup {
+              vertical-align: super;
+              font-size: 0.5em;
+            }
+            img {
+              vertical-align: top;
+            }
+            i {
+              font-style: normal;
+            }
+            /*----リセットcss*----/
+
+            /*デザインcss↓*/
+            .box_con02 {
+              max-width: 900px;
+              margin: 0  auto;
+            }
+            @media only screen and (max-width: 768px) {
+              .box_con02 {
+                width: 95%;
+              }
+            }
+            .box_con02 form {
+              width: 100%;
+            }
+            .box_con02 form table {
+              width: 100%;
+            }
+            .box_con02 form table tr {
+              position: relative;
+            }
+            .box_con02 form table tr:first-child td:before {
+              content: "";
+              position: absolute;
+              width: 100%;
+              left: 0;
+              top: 0;
+              height: 1px;
+              border-bottom: solid 1px rgba(28, 46, 83, 0.5);
+            }
+            @media only screen and (max-width: 768px) {
+              .box_con02 form table tr:first-child td:before {
+                display: none;
+              }
+            }
+            .box_con02 form table tr th {
+              width: 30%;
+              font-weight: normal;
+              padding: 1em .5em;
+              background: #1c2e53;
+              color: #fff;
+              position: relative;
+              -moz-box-sizing: border-box;
+              -webkit-box-sizing: border-box;
+              box-sizing: border-box;
+            }
+            @media only screen and (max-width: 768px) {
+              .box_con02 form table tr th {
+                text-align: center;
+                width: 100%;
+                display: block;
+                padding: .8em .2em;
+              }
+            }
+            .box_con02 form table tr th span {
+              background: #cd6f55;
+              padding: 0 .3em;
+              color: #fff;
+              margin-left: .5em;
+              -moz-box-sizing: border-box;
+              -webkit-box-sizing: border-box;
+              box-sizing: border-box;
+            }
+            .box_con02 form table tr th:after {
+              content: "";
+              position: absolute;
+              width: 100%;
+              left: 0;
+              bottom: 0;
+              height: 1px;
+              border-bottom: solid 1px #fff;
+            }
+            .box_con02 form table tr td {
+              position: relative;
+              padding: 1em .5em;
+              -moz-box-sizing: border-box;
+              -webkit-box-sizing: border-box;
+              box-sizing: border-box;
+            }
+            @media only screen and (max-width: 768px) {
+              .box_con02 form table tr td {
+                padding: 1.5em .5em;
+                display: block;
+                width: 100%;
+              }
+            }
+            .box_con02 form table tr td:after {
+              content: "";
+              position: absolute;
+              width: 100%;
+              left: 0;
+              bottom: 0;
+              height: 1px;
+              border-bottom: solid 1px rgba(28, 46, 83, 0.5);
+            }
+            .box_con02 form table tr .box_br {
+              display: block;
+            }
+            .box_con02 form table tr select, .box_con02 form table tr textarea, .box_con02 form table tr .wide {
+              width: 100%;
+              height: 3em;
+              padding: .5em;
+              -moz-box-sizing: border-box;
+              -webkit-box-sizing: border-box;
+              box-sizing: border-box;
+            }
+            .box_con02 form table tr textarea {
+              height: 10em;
+            }
+
+            /*プライバシーのデザインcss↓*/
+            .con_pri {
+              max-width: 700px;
+              margin: 0  auto;
+            }
+            @media only screen and (max-width: 768px) {
+              .con_pri {
+                width: 95%;
+              }
+            }
+            .con_pri .box_pri {
+              height: 300px;
+              overflow-y: scroll;
+              border: 1px solid #cdcdcd;
+              background: #f7f7f7;
+              -moz-box-sizing: border-box;
+              -webkit-box-sizing: border-box;
+              box-sizing: border-box;
+              margin-top: 20px;
+              padding: 20px 55px;
+            }
+            @media only screen and (max-width: 768px) {
+              .con_pri .box_pri {
+                margin-top: 4%;
+                padding: 3%;
+              }
+            }
+            @media only screen and (min-width: 769px) and (max-width: 1024px) {
+              .con_pri .box_pri {
+                padding: 4%;
+              }
+            }
+            .con_pri .box_pri .box_tori {
+              text-align: left;
+              margin-top: 40px;
+            }
+            @media only screen and (max-width: 768px) {
+              .con_pri .box_pri .box_tori {
+                margin-top: 4%;
+              }
+            }
+            .con_pri .box_pri .box_tori h4 {
+              font-weight: normal;
+              margin-bottom: 30px;
+              font-size: 150%;
+            }
+            @media only screen and (max-width: 768px) {
+              .con_pri .box_pri .box_tori h4 {
+                margin-bottom: 4%;
+              }
+            }
+            .con_pri .box_pri .box_tori .txt {
+              padding: 0 20px;
+            }
+            @media only screen and (max-width: 768px) {
+              .con_pri .box_pri .box_tori .txt {
+                padding: 0;
+              }
+            }
+            .con_pri .box_pri .box_num {
+              margin-top: 30px;
+            }
+            @media only screen and (max-width: 768px) {
+              .con_pri .box_pri .box_num {
+                margin-top: 5%;
+              }
+            }
+            .con_pri .box_pri .box_num h4 {
+              font-weight: normal;
+              font-size: 113%;
+            }
+            .con_pri .box_pri .box_num .txt {
+              padding: 10px 0 0 20px;
+            }
+            @media only screen and (max-width: 768px) {
+              .con_pri .box_pri .box_num .txt {
+                padding: 3% 0 0 3%;
+              }
+            }
+
+            .box_check {
+              text-align: center;
+              margin: 1em auto;
+            }
+            .box_check label {
+              display: inline-block;
+            }
+            .box_check label span {
+              margin-left: .3em;
+            }
+
+            .btn {
+              text-align: center;
+            }
+            .btn input {
+              display: inline-block;
+              background: #eee;
+              padding: .5em 4em;
+              color: #000;
+              text-decoration: none;
+              cursor: pointer;
+              border: none;
+              -moz-transition: all 0.4s;
+              -o-transition: all 0.4s;
+              -webkit-transition: all 0.4s;
+              transition: all 0.4s;
+            }
+            .btn input:hover {
+              filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
+              opacity: 0.7;
+            }
+        </style>
+    </head>
+    <body>
+        <template id="template">
+           <tr>
+               <td class="CreatedDate"></td>
+               <td class="Classification__c"></td>
+               <td class="Inquiry__c"></td>
+           </tr>
+        </template>
+        <div class="box_con02">
+            <form id="inquiryForm">
+                <p>お問い合わせ</p>
+                <table class="formTable">
+                    <tr>
+                        <th>ご用件</th>
+                        <td><select name="classification" id="classification">
+                            <option value="ATMについて">ATMについて</option>
+                            <option value="キャッシュカード・トークンについて">キャッシュカード・トークンについて</option>
+                            <option value="ログインパスワード・暗証番号・不明・変更について">ログインパスワード・暗証番号・不明・変更について</option>
+                            <option value="Visaデビットについて">Visaデビットについて</option>
+                            <option value="ローン・住宅ローンについて">ローン・住宅ローンについて</option>
+                            <option value="口座開設・口座利用開始について">口座開設・口座利用開始について</option>
+                            <option value="FX・投信・外貨預金について">FX・投信・外貨預金について</option>
+                            <option value="登録情報変更　住所変更等について">登録情報変更　住所変更等について</option>
+                            <option value="明細・振込・振替等について">明細・振込・振替等について</option>
+                            <option value="その他お問い合わせ">その他お問い合わせ</option>
+                        </select></td>
+                    </tr>
+                    <tr>
+                        <th>お問い合わせ内容</th>
+                        <td><textarea name="inquiry" id="inquiry" cols="50" rows="5"></textarea></td>
+                    </tr>
+                </table>
+                <p class="btn">
+                    <span><input type="button" onclick="send()" value="送信" /></span>
+                </p>
+                <p>過去のお問い合わせ内容</p>
+                <table id="pastInquiry" class="formTable">
+                    <tr><th>登録日</th><th>ご用件</th><th>お問い合わせ内容</th></tr>
+                </table>
+            </form>
+        </div>
+    </body>
+</html>
+<script type="text/javascript">
+    // 初期表示処理
+    window.onload = function(){
+        
+        // アクセストークン取得
+        var xmlHttpRequest = new XMLHttpRequest();
+        xmlHttpRequest.onreadystatechange = function(){
+            if(this.readyState == 4 && this.status == 200){
+                alert('成功');
+            }
+        }
+        xmlHttpRequest.open( 'GET', 'https://protocomdev-dev-ed.my.salesforce.com/services/oauth2/authorize?response_type=token&client_id=3MVG9pRzvMkjMb6nsLsmTx_FqB0rQ9AHEMYt85TrwFp6b3yeP.ta18VQpmha_Ds31fssFdYib4DdLPcLKqtQG');
+        xmlHttpRequest.send();
+        
+        // GETメソッド呼び出し
+        /*
+        var xmlHttpRequest = new XMLHttpRequest();
+        xmlHttpRequest.onreadystatechange = function(){
+            if(this.readyState == 4 && this.status == 200){
+                var res = JSON.parse(this.responseText);
+
+                if(res.length != 0){
+                    // template要素を取得
+                    var template = document.getElementById('template');
+
+                    for(var i =0; i < res.length; i++){
+                        // template要素の内容を複製
+                        var clone = template.content.cloneNode(true);
+
+                        // 複製したtemplate要素にデータを挿入
+                        clone.querySelector('.CreatedDate').textContent = res[i].CreatedDate;
+                        clone.querySelector('.Classification__c').textContent = res[i].Classification__c;
+                        clone.querySelector('.Inquiry__c').textContent = res[i].Inquiry__c;
+
+                        // div#containerの中に追加
+                        document.getElementById('pastInquiry').appendChild(clone);
+                    }
+                }
+            }
+        }
+        xmlHttpRequest.open( 'GET', 'https://protocomdev-dev-ed.my.salesforce.com/services/apexrest/PPB_Inquiry__c/A0000001');
+        xmlHttpRequest.setRequestHeader( 'Authorization', 'Bearer 00D5j00000BXmyf!ARUAQGldTNg3pGkoK1NmY3umXrnXf2e9d5BKCFk8MHkbBauakgdqTva6PLBD3Lnij.jl156xmWOxUUp2GjawNjS_D28o8NpQ');
+        xmlHttpRequest.send();
+        */
+    }
+
+    function send() {
+        // ご用件を取得
+        const classificationValue = document.getElementById("classification").value;
+
+        // お問い合わせ内容を取得
+        const inquiryValue = document.getElementById("inquiry").value;
+
+        var inputData = {};
+
+        inputData.AccountNumber = 'A0000001';
+        inputData.Classification = classificationValue;
+        inputData.Inquiry = inquiryValue;
+
+        // Rest ApexへパラメータをJSON形式に変換
+        data = JSON.stringify( inputData );
+
+        var xmlHttpRequest = new XMLHttpRequest();
+        xmlHttpRequest.onreadystatechange = function()
+        {
+            if(this.readyState == 4 && this.status == 200){
+                var res = JSON.parse(this.responseText);
+                if(res.length != 0){
+                    var formElement = document.getElementById('inquiryForm');
+                    formElement.reset();
+                    
+                    var oldPastInquiry = document.getElementById('pastInquiry');
+                    var removeOldPastInquiry = oldPastInquiry.querySelectorAll('tr');
+                    
+                    for(var i = 1; i < removeOldPastInquiry.length; i++){
+                        removeOldPastInquiry[i].parentNode.removeChild(removeOldPastInquiry[i])
+                    }
+                    // template要素を取得
+                    var template = document.getElementById('template');
+                    for(var i = 0; i < res.length; i++){
+                        // template要素の内容を複製
+                        var clone = template.content.cloneNode(true);
+
+                        // 複製したtemplate要素にデータを挿入
+                        clone.querySelector('.CreatedDate').textContent = res[i].CreatedDate;
+                        clone.querySelector('.Classification__c').textContent = res[i].Classification__c;
+                        clone.querySelector('.Inquiry__c').textContent = res[i].Inquiry__c;
+
+                        // div#containerの中に追加
+                        document.getElementById('pastInquiry').appendChild(clone);
+                    }
+                }
+            }
+        }
+        xmlHttpRequest.open( 'POST', 'https://protocomdev-dev-ed.my.salesforce.com/services/apexrest/PPB_Inquiry__c/');
+        // サーバに対して解析方法を指定する
+        xmlHttpRequest.setRequestHeader( 'Content-Type', 'application/json');
+        xmlHttpRequest.setRequestHeader( 'Authorization', 'Bearer 00D5j00000BXmyf!ARUAQGldTNg3pGkoK1NmY3umXrnXf2e9d5BKCFk8MHkbBauakgdqTva6PLBD3Lnij.jl156xmWOxUUp2GjawNjS_D28o8NpQ');
+        // データをリクエスト ボディに含めて送信する
+        xmlHttpRequest.send( data );
+
+    }
+</script>
