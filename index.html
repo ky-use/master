@@ -322,9 +322,11 @@
 </html>
 <script type="text/javascript">
     // 初期表示処理
+    /*
     window.onload = function(){
         
         // アクセストークン取得
+        
         var xmlHttpRequest = new XMLHttpRequest();
         xmlHttpRequest.onreadystatechange = function(){
             if(this.readyState == 4 && this.status == 200){
@@ -334,8 +336,9 @@
         xmlHttpRequest.open( 'GET', 'https://protocomdev-dev-ed.my.salesforce.com/services/oauth2/authorize?response_type=token&client_id=3MVG9pRzvMkjMb6nsLsmTx_FqB0rQ9AHEMYt85TrwFp6b3yeP.ta18VQpmha_Ds31fssFdYib4DdLPcLKqtQG&redirect_uri=https://ky-use.github.io/master/');
         xmlHttpRequest.send();
         
+
         // GETメソッド呼び出し
-        /*
+        
         var xmlHttpRequest = new XMLHttpRequest();
         xmlHttpRequest.onreadystatechange = function(){
             if(this.readyState == 4 && this.status == 200){
@@ -361,10 +364,10 @@
             }
         }
         xmlHttpRequest.open( 'GET', 'https://protocomdev-dev-ed.my.salesforce.com/services/apexrest/PPB_Inquiry__c/A0000001');
-        xmlHttpRequest.setRequestHeader( 'Authorization', 'Bearer 00D5j00000BXmyf!ARUAQGldTNg3pGkoK1NmY3umXrnXf2e9d5BKCFk8MHkbBauakgdqTva6PLBD3Lnij.jl156xmWOxUUp2GjawNjS_D28o8NpQ');
+        xmlHttpRequest.setRequestHeader( 'Authorization', 'Bearer 00D5j00000BXmyf!ARUAQB.mhTblVOiTOhlaToNgPHYmkPTGUHdPVmBp.XMT2pEo8VDKCfCaRpqcwcpjFbbGqNJitgYjSh.4uyZhO7n1ZCS65QSE');
         xmlHttpRequest.send();
-        */
-    }
+      }
+      */
 
     function send() {
         // ご用件を取得
